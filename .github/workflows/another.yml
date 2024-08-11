@@ -1,9 +1,7 @@
 name: checkout
 
 on:
- push:
-  branches:
-    - main
+  - workflow_dispatch
     
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }} 
@@ -26,7 +24,7 @@ jobs:
        run: terraform fmt -recursive
      - name: plan
        run: terraform plan 
-     - name: apply
-       run: terraform apply -auto-approve  
+     #- name: apply
+       #run: terraform apply -auto-approve  
 
   
