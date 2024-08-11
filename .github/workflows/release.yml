@@ -6,9 +6,9 @@ on:
 jobs:
    release:
       permissions:
+        pull-requests: write
         contents: write
         issues: write
-        pull_request: write
       runs-on: ubuntu-latest
       steps:
         - name: checkout
