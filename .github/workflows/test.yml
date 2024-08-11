@@ -25,4 +25,15 @@ jobs:
        run: |
          import platform
          print(platform.processor())
-       shell: python  
+       shell: python
+
+  windows-commands:
+   runs-on: windows-latest
+   needs: python-commands
+   steps:
+    - name: Directory
+      run: Get-location
+    - name: Get-Directory
+      run: pwd
+      shell: bash        
+       
