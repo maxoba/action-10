@@ -18,7 +18,7 @@ jobs:
             node-version: 20
         - name: modules
           run: npm install semantic-release @semantic-release/git @semantic-release/github -D
-        - name: release 
+        - name: semantic release 
           run: npx semantic-release
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
