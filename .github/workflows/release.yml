@@ -19,9 +19,6 @@ jobs:
             node-version: 20
         - name: modules
           run: npm install semantic-release @semantic-release/git @semantic-release/github -D
-        - name: Create a release
-          if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
-          run: npx semantic-release
         - name: release 
           run: npx semantic-release
           env:
