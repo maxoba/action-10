@@ -1,4 +1,4 @@
-name: checkout
+name: checkout code
 
 on:
  push:
