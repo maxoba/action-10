@@ -4,9 +4,8 @@ on:
   branches:
     - main
  pull_request:
-    types: [opened]
   branches:
-    - dev     
+    - main    
     
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }} 
@@ -16,22 +15,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - name: terraform
-       run: echo "running terraform commands"
+       run: echo "running terraform command"
      - name: checkout
        uses: actions/checkout@v4
     
      - uses: hashicorp/setup-terraform@v3
        with:
-         terraform_version: "1.1.7"  
+         terraform_version: "1.9.3"  
      - name: init
        run: terraform init
+       
      - name: format
        run: terraform fmt -recursive
+
      - name: plan
        run: terraform plan
        if: github.event_name == 'pull_request'
-     - name: apply
-       run: terraform apply -auto-approve 
-       if: github.event_name == 'push'&& github.ref == 'ref/head/main' 
+     #- name: apply
+      # run: terraform apply -auto-approve 
+      # if: github.event_name == 'push'&& github.ref == 'ref/head/main' 
 
   
