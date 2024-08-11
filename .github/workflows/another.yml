@@ -1,7 +1,13 @@
 name: checkout
 
 on:
- push
+ push:
+  branches:
+    - main
+ pull_request:
+    types: [opened]
+  branches:
+    - dev     
     
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }} 
@@ -24,9 +30,9 @@ jobs:
        run: terraform fmt -recursive
      - name: plan
        run: terraform plan
-       if: github.event_name == 'workflow_dispatch'
+       if: github.event_name == 'pull_request'
      - name: apply
        run: terraform apply -auto-approve 
-       if: success() 
+       if: github.event_name == 'push'&& github.ref == 'ref/head/main' 
 
   
