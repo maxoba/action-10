@@ -9,7 +9,6 @@ jobs:
         contents: write
         issues: write
         pull_requests: write
-
       runs-on: ubuntu-latest
       steps:
         - name: checkout
@@ -18,7 +17,7 @@ jobs:
           uses: actions/setup-node@v4
           with:
             node-version: 20
-        - name: modules
+        - name: module
           run: npm install semantic-release @semantic-release/git @semantic-release/github -D
         - name: release 
           run: npx semantic-release
